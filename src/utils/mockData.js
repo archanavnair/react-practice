@@ -1,54 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/********Starting from scratch*************/
-
-//JSX (transpiled before it reaches the JS engine) which is done by Parcel with the help of Babel library
-
-//React Functional Component
-// const Title = () => (
-//   <h1 className="head" tabIndex="5">
-//     Namaste React Title Component
-//   </h1>
-// );
-
-//Component Composition
-// const HeadingComponent = () => (
-//   <div id="container">
-//     {Title()}
-//     <Title />
-//     <Title></Title>
-//     <h1 className="heading">Namaste React Functional Component 🚀</h1>
-//   </div>
-// );
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<HeadingComponent />);
-
-//App-starts here
-const Header = () => {
-  return (
-    <div className="header">
-      <div>
-        <img
-          className="logo"
-          src="https://marketplace.canva.com/EAFaFUz4aKo/2/0/1600w/canva-yellow-abstract-cooking-fire-free-logo-JmYWTjUsE-Q.jpg"
-        ></img>
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-//REstaurant Card Compponent
-
 const resObjList = [
   {
     info: {
@@ -60,7 +9,7 @@ const resObjList = [
       areaName: "Shanti Nagar",
       costForTwo: "₹600 for two",
       cuisines: ["Pizzas"],
-      avgRating: 4.3,
+      avgRating: 3.8,
       parentId: "721",
       avgRatingString: "4.3",
       totalRatingsString: "10K+",
@@ -1348,51 +1297,4 @@ const resObjList = [
   },
 ];
 
-const RestaurantCard = (props) => {
-  const { resData } = props;
-
-  const { cloudinaryImageId, name, cuisines, avgRating } = resData?.info;
-  const { deliveryTime } = resData?.info?.sla;
-
-  return (
-    <div className="restaurant-card">
-      <img
-        className="restaurant-img"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          resData.info.cloudinaryImageId
-        }
-        alt="pho"
-      ></img>
-      <h3 style={{ textAlign: "center" }}>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h5>{avgRating} stars</h5>
-      <h5>{deliveryTime} Minutes</h5>
-    </div>
-  );
-};
-
-//body component
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">search</div>
-      <div className="restaurant-container">
-        {resObjList.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default resObjList;
