@@ -58,3 +58,22 @@
   margin: 10px;
   cursor: pointer;
 }
+
+.shimmer-card {
+  margin: auto;
+  margin: 1rem;
+  width: 200px;
+  height: 300px;
+  background-color: rgb(208, 204, 204);
+}
+.shimmer-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.loginBtn {
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: red;
+  border-color: red;
+}
