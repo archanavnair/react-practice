@@ -17,6 +17,11 @@ const Body = () => {
 
   const [searchTxt, setSearchTxt] = useState("");
 
+  useEffect(() => {
+    //console.log("useEffect called"); //useEffect callback function wll be called immediately after the app is rendered
+    //fetchData(); //to call live API without waitiing for the API response
+  }, []);
+
   console.log(searchTxt);
 
   const getFilteredRestaurants = () => {
@@ -28,13 +33,9 @@ const Body = () => {
     setFilteredRestaurants(filteredList);
   };
 
-  useEffect(() => {
-    console.log("useEffect called"); //useEffect callback function wll be called immediately after the app is rendered
-    //fetchData(); //to call live API
-  }, []);
-
   const fetchData = async () => {
-    const url = "https://www.swiggy.com/dapi/restaurants/list/update";
+    const url =
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/update";
     const payload = {
       lat: 12.9715987,
       lng: 77.5945627,
