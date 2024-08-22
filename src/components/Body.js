@@ -8,9 +8,25 @@ import Shimmer from "./Shimmer";
 //body component
 const Body = () => {
   // Local State variable -- super powerful variable
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [listOfRestaurants, setListOfRestaurants] = useState(
+    resObjList[0].feedItems
+  );
 
-  //console.log(listOfRestaurants);
+  const [filtredRestaurants, setFilteredRestaurants] =
+    useState(listOfRestaurants);
+
+  const [searchTxt, setSearchTxt] = useState("");
+
+  console.log(searchTxt);
+
+  const getFilteredRestaurants = () => {
+    //Filter the restaurant cards and update the UI
+    const filteredList = listOfRestaurants.filter((res) =>
+      res?.store?.title?.text.toLowerCase().includes(searchTxt.toLowerCase())
+    );
+
+    setFilteredRestaurants(filteredList);
+  };
 
   useEffect(() => {
     console.log("useEffect called"); //useEffect callback function wll be called immediately after the app is rendered
@@ -47,6 +63,7 @@ const Body = () => {
 
     const json = await data.json();
     setListOfRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestaurants(listOfRestaurants);
   };
 
   //setListOfRestaurants  to modify the state variable
@@ -60,23 +77,40 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      {/* <div className="search">search</div> */}
-      <button
-        className="filterBtn"
-        onClick={() => {
-          {
-            const filteredList = listOfRestaurants.filter(
-              (res) => Number(res?.store?.rating?.text, 10) > 4.5
-            );
-            console.log(filteredList);
-            setListOfRestaurants(filteredList);
-          }
-        }}
-      >
-        Top Rated Restaurants
-      </button>
+      <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="searchTxt"
+            value={searchTxt}
+            onChange={(e) => {
+              setSearchTxt(e.target.value);
+              if (e.target.value == "") {
+                //on clear of the input field reset the list fo restaurant cards
+                setFilteredRestaurants(listOfRestaurants);
+              }
+            }}
+          />
+          <button onClick={getFilteredRestaurants}>Search</button>
+        </div>
+        <button
+          className="filterBtn"
+          onClick={() => {
+            {
+              const filteredList = listOfRestaurants.filter(
+                (res) => Number(res?.store?.rating?.text, 10) > 4.5
+              );
+              console.log(filteredList);
+              setFilteredRestaurants(filteredList);
+            }
+          }}
+        >
+          Top Rated Restaurants
+        </button>
+      </div>
+
       <div className="restaurant-container">
-        {listOfRestaurants.map((restaurant) => (
+        {filtredRestaurants.map((restaurant) => (
           <RestaurantCard key={restaurant?.uuid} resData={restaurant} />
         ))}
       </div>

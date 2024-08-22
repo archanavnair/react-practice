@@ -22,11 +22,6 @@
   margin: 0 1rem;
 }
 
-.search {
-  margin: 0.5rem 1rem;
-  padding: 0.5rem;
-}
-
 .restaurant-card {
   width: 200px;
   height: auto;
@@ -76,4 +71,12 @@
   cursor: pointer;
   background-color: red;
   border-color: red;
+}
+
+.filter {
+  display: flex;
+}
+
+.searchTxt {
+  margin: 10px;
 }
