@@ -33,4 +33,8 @@ import {comp_nam} from path;
 - Normal JS functions
 - useState() - Superpowerful state variables in react
 - useEfffect()
--
+
+# Types of Routing in web apps
+
+- Client Side Routing : no netwrk calls to get the page, pages exist locally and connects to it through the Link call and refreshes that particular component
+- Server Side Routing : on click of the anchor tag, it sends the network call and refreshes the whole page with the Response
