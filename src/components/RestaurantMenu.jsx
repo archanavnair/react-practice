@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
 
 useEffect(() => {
 
-  //fetchMenu();//call teh api
+  //fetchMenu();//call the api
 },[]);
 
 fetchMenu = async () => {
