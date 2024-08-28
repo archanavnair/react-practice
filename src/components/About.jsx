@@ -1,4 +1,4 @@
-import User from "./User";
+import User from "./user";
 import UserClasss from "./UserClass";
 import {Component} from "react";
 
@@ -31,8 +31,8 @@ class About extends Component {
     return <div>
     <h1>About</h1>
     <h2>This is About page</h2>
-    {/* <User name = {"Archana( via function)"}/> */}
-    <UserClasss name = {"Archana (via class)"} location = { "Canada" }/>
+    <User name = {"Archana( via function)"}/>
+    {/* <UserClasss name = {"Archana (via class)"} location = { "Canada" }/> */}
   </div>
   }
 }

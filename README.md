@@ -19,7 +19,8 @@
 - HTTPs
 - Tree Shaking - remove unused code
 
-//Two types of export and import
+# Two types of export and import
+
 1 - default Export/Import
 : export default comp_name;
 imort comp_name from path;

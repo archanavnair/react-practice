@@ -29,7 +29,10 @@ class UserClass extends React.Component {
       this.setState({
         userInfo: json
       });
-      console.log(json)
+      console.log(json);
+      // this.timer = setInterval(() => {// 'this' iis shared with all methods of this class
+      //   console.log("FROM USECLASS")
+      // }, 1000);/// this will be called even after going out of the component aand thats the reason we call  componentWillUnmount()
     }
 
     
@@ -38,6 +41,7 @@ class UserClass extends React.Component {
     }
 
     componentWillUnmount(){
+      // clearInterval(this.timer);//i can clear it here because its this.timer
       console.log("componentWillUnmount")
     }
 

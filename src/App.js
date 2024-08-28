@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 
 import Header from "./components/Header";
@@ -9,6 +9,7 @@ import Error from "./components/Error";
 
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+// import Grocery from "./components/Grocery";
 
 /********Starting from scratch*************/
 
@@ -35,6 +36,10 @@ import RestaurantMenu from "./components/RestaurantMenu";
 // root.render(<HeadingComponent />);
 
 //REstaurant Card Compponent
+
+//Lazy Loading
+
+const Grocery = lazy(() => import("./components/Grocery")); //path to Grocery component will be gven inside
 
 const AppLayout = () => {
   return (
@@ -63,6 +68,15 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        //wrap inside Suspense component to handle the delay in fetching the bundle
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurants/:resId", // this is how you create Dynamic Routing
