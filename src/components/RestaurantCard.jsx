@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
 
 
   return (
-    <div className="restaurant-card">
+    <div className="m-4 p-4 w-[250px] h-[300px] bg-yellow-100 shadow-lg rounded hover:bg-orange-400 hover:shadow-2xl">
       <img
         className="restaurant-img"
         src={
@@ -16,10 +16,10 @@ const RestaurantCard = (props) => {
         }
         alt="image"
       ></img>
-      <h3 style={{ textAlign: "center" }}>{resData?.store?.title?.text}</h3>
+      <h3 className="font-bold py-4 text-lg">{resData?.store?.title?.text}</h3>
       {/* <h4>{cuisines.join(", ")}</h4> */}
-      <h5>{resData?.store?.rating?.text} stars</h5>
-      <h5>{resData?.store?.meta[0]?.text} Minutes</h5>
+      <h5>{resData?.store?.rating?.text ?? 0} stars</h5>
+      <h5>{resData?.store?.meta[0]?.text} </h5>
     </div>
   );
 };

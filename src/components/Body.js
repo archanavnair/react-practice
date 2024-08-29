@@ -86,12 +86,12 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="body p-4">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="searchTxt"
+            className="border border-solid border-black"
             value={searchTxt}
             onChange={(e) => {
               setSearchTxt(e.target.value);
@@ -101,25 +101,32 @@ const Body = () => {
               }
             }}
           />
-          <button onClick={getFilteredRestaurants}>Search</button>
+          <button
+            className="px-2 py-1 bg-green-200 m-2 rounded"
+            onClick={getFilteredRestaurants}
+          >
+            Search
+          </button>
         </div>
-        <button
-          className="filterBtn"
-          onClick={() => {
-            {
-              const filteredList = listOfRestaurants.filter(
-                (res) => Number(res?.store?.rating?.text, 10) > 4.5
-              );
-              console.log(filteredList);
-              setFilteredRestaurants(filteredList);
-            }
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="m-4 p-4 flex items-center">
+          <button
+            className="px-2 py-1 bg-gray-300 rounded"
+            onClick={() => {
+              {
+                const filteredList = listOfRestaurants.filter(
+                  (res) => Number(res?.store?.rating?.text, 10) > 4.5
+                );
+                console.log(filteredList);
+                setFilteredRestaurants(filteredList);
+              }
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
 
-      <div className="restaurant-container">
+      <div className="flex flex-wrap content-center">
         {filtredRestaurants.map((restaurant) => (
           <Link to={"/restaurants/" + restaurant.uuid} key={restaurant?.uuid}>
             <RestaurantCard resData={restaurant} />
